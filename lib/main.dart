@@ -217,7 +217,7 @@ void main() async {
     // Ensure we always show SOMETHING to the user
     runApp(
       MaterialApp(
-        title: 'PatelMart',
+        title: 'JustPress Store',
         home: Scaffold(
           backgroundColor: Colors.white,
           body: SafeArea(
@@ -275,7 +275,7 @@ class _MisconfiguredApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PatelMart',
+      title: 'JustPress Store',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,

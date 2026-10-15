@@ -68,7 +68,7 @@ class ProjectConfig {
       ? appName
       : clientName.isNotEmpty
           ? clientName
-          : 'Patel Mart';
+          : 'JustPress Store';
 
   /// Parsed primary color, or null when unset/invalid
   Color? get primarySeedColor => _parseHexColor(primaryColor);

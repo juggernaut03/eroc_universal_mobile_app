@@ -36,7 +36,7 @@ class AppBranding {
   static const Color _defError = Color(0xFFF44336);
   static const Color _defInfo = Color(0xFF2196F3);
   static const String _defFontFamily = 'Poppins';
-  static const String _defAppName = 'Patel Mart';
+  static const String _defAppName = 'JustPress Store';
   static const double _defSplashLogoSize = 300;
   static const int _defSplashDurationMs = 2000;
   static const SplashAnimation _defSplashAnimation = SplashAnimation.fadeScale;

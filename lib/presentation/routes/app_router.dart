@@ -175,7 +175,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/',
         name: RouteNames.splash,
         builder: (context, state) => const SplashScreen(
-          logoAsset: 'assets/images/patelLogo.png',
+          logoAsset: 'assets/images/justpress_logo.png',
         ),
       ),
       GoRoute(

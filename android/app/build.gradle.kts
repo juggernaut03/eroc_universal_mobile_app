@@ -124,7 +124,7 @@ android {
         create("shreemegamart") {
             dimension = "tenant"
             applicationId = "com.shreemegamart.androidapp"
-            resValue("string", "app_name", "Shree Mega Mart")
+            resValue("string", "app_name", "JustPress Store")
             signingConfig = signingConfigs.findByName("shreemegamart") ?: signingConfigs.getByName("debug")
             manifestPlaceholders["appLinkPathPrefix"] = "/RET2690"
         }

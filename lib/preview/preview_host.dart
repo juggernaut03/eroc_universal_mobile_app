@@ -236,7 +236,7 @@ class _PreviewViewport extends ConsumerWidget {
       case PreviewScreen.splash:
         // The same asset the router passes, so the fallback logo shown when a
         // tenant has not uploaded one matches what the phone falls back to.
-        return const SplashScreen(logoAsset: 'assets/images/patelLogo.png');
+        return const SplashScreen(logoAsset: 'assets/images/justpress_logo.png');
 
       case PreviewScreen.onboarding:
         return const OnboardingScreen();

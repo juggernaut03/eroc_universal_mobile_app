@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/branding/app_branding.dart';
@@ -33,24 +32,6 @@ class AboutUsScreen extends ConsumerWidget {
         context.pushReplacement('/home');
       }
       return false;
-    }
-  }
-
-  // Method to launch URLs
-  Future<void> _launchUrl(String url, WidgetRef ref) async {
-    final logger = ref.read(loggerProvider);
-    try {
-      final uri = Uri.parse(url);
-      if (await canLaunchUrl(uri)) {
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
-        logger.log('Successfully launched URL: $url');
-      } else {
-        logger.error('Could not launch URL: $url');
-        throw Exception('Could not launch $url');
-      }
-    } catch (e) {
-      logger.error('Error launching URL $url: $e');
-      // Show error to user
     }
   }
 
@@ -344,9 +325,6 @@ class AboutUsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 8),
           InkWell(
-            onTap: () async {
-              await _launchUrl('https://shalviadvision.com/', ref);
-            },
             borderRadius: BorderRadius.circular(8),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -354,18 +332,11 @@ class AboutUsScreen extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    Icons.web,
-                    color: AppColors.primary,
-                    size: 18,
-                  ),
-                  const SizedBox(width: 8),
                   Text(
-                    'Shalvi Advision',
+                    'JustPress Solutions',
                     style: AppTextStyles.bodyMedium.copyWith(
                       color: AppColors.primary,
                       fontWeight: FontWeight.w600,
-                      decoration: TextDecoration.underline,
                     ),
                   ),
                 ],

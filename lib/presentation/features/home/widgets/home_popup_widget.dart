@@ -358,7 +358,7 @@ class _HomePopupWidgetState extends ConsumerState<HomePopupWidget>
         return _buildFallbackImage();
       },
       httpHeaders: {
-        'User-Agent': 'Patel Mart Mobile App/1.0',
+        'User-Agent': 'JustPress Store Mobile App/1.0',
         'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
         'Cache-Control': 'no-cache',

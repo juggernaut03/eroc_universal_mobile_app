@@ -513,7 +513,7 @@ class _RefundTncScreenState extends ConsumerState<RefundTncScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            'These terms are governed by Indian law and subject to the jurisdiction of courts in Maharashtra, India. Developed By Shalvi Advision',
+            'These terms are governed by Indian law and subject to the jurisdiction of courts in Maharashtra, India. Developed By JustPress Solutions',
             style: AppTextStyles.bodySmall.copyWith(
               color: AppColors.textSecondary,
             ),
