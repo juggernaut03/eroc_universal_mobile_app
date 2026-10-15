@@ -15,6 +15,7 @@ import '../../../providers/cart_provider.dart';
 // FACEBOOK PIXEL IMPORTS
 import '../../../../di/infrastructure_providers.dart';
 import '../checkout_models.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // Checkout step enum to track progress
 
@@ -597,7 +598,7 @@ class _DeliveryTimeStepState extends ConsumerState<DeliveryTimeStep> {
                     style: AppTextStyles.bodyMedium,
                   ),
                   Text(
-                    '₹${cartTotal.toStringAsFixed(2)}',
+                    '$currencySymbol${cartTotal.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyMedium,
                   ),
                 ],
@@ -670,7 +671,7 @@ class _DeliveryTimeStepState extends ConsumerState<DeliveryTimeStep> {
                         // delivery — handling/packaging fees below are not.
                         : (isFreeDelivery && distanceCharge <= 0)
                           ? 'FREE'
-                          : '₹${distanceCharge.toStringAsFixed(2)}',
+                          : '$currencySymbol${distanceCharge.toStringAsFixed(2)}',
                       style: AppTextStyles.bodyMedium.copyWith(
                         color: (isFreeDelivery && distanceCharge <= 0) ? Colors.green : null,
                         fontWeight: (isFreeDelivery && distanceCharge <= 0) ? FontWeight.bold : null,
@@ -703,7 +704,7 @@ class _DeliveryTimeStepState extends ConsumerState<DeliveryTimeStep> {
                       ],
                     ),
                     Text(
-                      '₹${handlingFee.toStringAsFixed(2)}',
+                      '$currencySymbol${handlingFee.toStringAsFixed(2)}',
                       style: AppTextStyles.bodyMedium,
                     ),
                   ],
@@ -732,7 +733,7 @@ class _DeliveryTimeStepState extends ConsumerState<DeliveryTimeStep> {
                       ],
                     ),
                     Text(
-                      '₹${packageFee.toStringAsFixed(2)}',
+                      '$currencySymbol${packageFee.toStringAsFixed(2)}',
                       style: AppTextStyles.bodyMedium,
                     ),
                   ],
@@ -761,7 +762,7 @@ class _DeliveryTimeStepState extends ConsumerState<DeliveryTimeStep> {
                       ],
                     ),
                     Text(
-                      '₹${packingFee.toStringAsFixed(2)}',
+                      '$currencySymbol${packingFee.toStringAsFixed(2)}',
                       style: AppTextStyles.bodyMedium,
                     ),
                   ],
@@ -816,7 +817,7 @@ class _DeliveryTimeStepState extends ConsumerState<DeliveryTimeStep> {
                       ],
                     ),
                     Text(
-                      '₹${cartSavings.toStringAsFixed(2)}',
+                      '$currencySymbol${cartSavings.toStringAsFixed(2)}',
                       style: AppTextStyles.bodyMedium.copyWith(
                         color: Colors.green,
                       ),
@@ -838,7 +839,7 @@ class _DeliveryTimeStepState extends ConsumerState<DeliveryTimeStep> {
                     ),
                   ),
                   Text(
-                    '₹${finalTotal.toStringAsFixed(2)}',
+                    '$currencySymbol${finalTotal.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyLarge.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.primary,

@@ -20,6 +20,7 @@ import '../../../../data/models/product_model.dart';
 import '../../../../data/services/banner_service.dart';
 import '../../../providers/recently_viewed_providers.dart';
 import 'home_product_card.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // ----------------------------------------------------------------------
 
@@ -250,12 +251,12 @@ class _CouponCard extends StatelessWidget {
     if (amount <= 0) return (coupon['title'] ?? 'Offer').toString();
 
     final isPercent = '${coupon['discount_type']}' == 'percentage';
-    return isPercent ? '${amount.toStringAsFixed(0)}% off' : '₹${amount.toStringAsFixed(0)} off';
+    return isPercent ? '${amount.toStringAsFixed(0)}% off' : '$currencySymbol${amount.toStringAsFixed(0)} off';
   }
 
   String get _condition {
     final min = double.tryParse('${coupon['min_cart_value'] ?? ''}') ?? 0;
-    return min > 0 ? 'On orders over ₹${min.toStringAsFixed(0)}' : 'On your order';
+    return min > 0 ? 'On orders over $currencySymbol${min.toStringAsFixed(0)}' : 'On your order';
   }
 
   @override

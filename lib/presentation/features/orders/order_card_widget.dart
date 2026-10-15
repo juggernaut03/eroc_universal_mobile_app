@@ -8,6 +8,7 @@ import 'dart:math';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../data/models/order_model.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class OrderCardWidget extends ConsumerWidget {
   final Order order;
@@ -202,7 +203,7 @@ class OrderCardWidget extends ConsumerWidget {
                           Row(
                             children: [
                               Text(
-                                '₹${order.totalAmount.toStringAsFixed(order.totalAmount.truncateToDouble() == order.totalAmount ? 0 : 2)}',
+                                '$currencySymbol${order.totalAmount.toStringAsFixed(order.totalAmount.truncateToDouble() == order.totalAmount ? 0 : 2)}',
                                 style: const TextStyle(
                                   color: Colors.black87,
                                   fontWeight: FontWeight.w700,
@@ -279,7 +280,7 @@ class OrderCardWidget extends ConsumerWidget {
                             ),
                           ),
                           Text(
-                            '₹${correctSavings.toStringAsFixed(correctSavings.truncateToDouble() == correctSavings ? 0 : 2)}',
+                            '$currencySymbol${correctSavings.toStringAsFixed(correctSavings.truncateToDouble() == correctSavings ? 0 : 2)}',
                             style: TextStyle(
                               color: AppColors.primary,
                               fontSize: 16,

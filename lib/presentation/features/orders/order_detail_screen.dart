@@ -11,6 +11,7 @@ import '../../providers/cart_provider.dart';
 import '../cart/widgets/persistent_cart_widget.dart';
 import '../../../di/infrastructure_providers.dart';
 import 'package:flutter/foundation.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class OrderDetailScreen extends ConsumerWidget {
   final Order order;
@@ -130,7 +131,7 @@ class OrderDetailScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 12),
 
-                      _buildInfoRow('Total Amount:', '₹${order.totalAmount.toStringAsFixed(order.totalAmount.truncateToDouble() == order.totalAmount ? 0 : 2)}'),
+                      _buildInfoRow('Total Amount:', '$currencySymbol${order.totalAmount.toStringAsFixed(order.totalAmount.truncateToDouble() == order.totalAmount ? 0 : 2)}'),
                       const SizedBox(height: 12),
                       if ((order.refundAmount ?? 0) > 0) ...[
                         Row(
@@ -149,7 +150,7 @@ class OrderDetailScreen extends ConsumerWidget {
                             ),
                             Expanded(
                               child: Text(
-                                '₹${order.refundAmount!.toStringAsFixed(order.refundAmount!.truncateToDouble() == order.refundAmount! ? 0 : 2)}',
+                                '$currencySymbol${order.refundAmount!.toStringAsFixed(order.refundAmount!.truncateToDouble() == order.refundAmount! ? 0 : 2)}',
                                 style: TextStyle(
                                   color: Colors.green[700],
                                   fontSize: 13,
@@ -483,9 +484,9 @@ class OrderDetailScreen extends ConsumerWidget {
         children: [
           _buildInfoRow('Payment Mode:', order.paymentMethod),
           const SizedBox(height: 12),
-          _buildInfoRow('Total Amount:', '₹${order.totalAmount.toStringAsFixed(order.totalAmount.truncateToDouble() == order.totalAmount ? 0 : 2)}'),
+          _buildInfoRow('Total Amount:', '$currencySymbol${order.totalAmount.toStringAsFixed(order.totalAmount.truncateToDouble() == order.totalAmount ? 0 : 2)}'),
           const SizedBox(height: 12),
-          _buildInfoRow('Cart Total:', '₹${cartTotal.toStringAsFixed(cartTotal.truncateToDouble() == cartTotal ? 0 : 2)}'),
+          _buildInfoRow('Cart Total:', '$currencySymbol${cartTotal.toStringAsFixed(cartTotal.truncateToDouble() == cartTotal ? 0 : 2)}'),
           const SizedBox(height: 12),
           
           // Delivery Charges
@@ -523,7 +524,7 @@ class OrderDetailScreen extends ConsumerWidget {
                       ),
                     const SizedBox(width: 6),
                     Text(
-                      delivery > 0 ? '₹${delivery.toStringAsFixed(delivery.truncateToDouble() == delivery ? 0 : 2)}' : '₹49',
+                      delivery > 0 ? '$currencySymbol${delivery.toStringAsFixed(delivery.truncateToDouble() == delivery ? 0 : 2)}' : '${currencySymbol}49',
                       style: TextStyle(
                         color: delivery > 0 ? Colors.black : Colors.grey,
                         fontSize: 13,
@@ -532,9 +533,9 @@ class OrderDetailScreen extends ConsumerWidget {
                       ),
                     ),
                     if (delivery == 0)
-                      const Text(
-                        ' ₹0',
-                        style: TextStyle(
+                      Text(
+                        ' ${currencySymbol}0',
+                        style: const TextStyle(
                           color: Colors.green,
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
@@ -565,7 +566,7 @@ class OrderDetailScreen extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    '₹${savings.toStringAsFixed(savings.truncateToDouble() == savings ? 0 : 2)}',
+                    '$currencySymbol${savings.toStringAsFixed(savings.truncateToDouble() == savings ? 0 : 2)}',
                     style: TextStyle(
                       color: Colors.amber[700],
                       fontWeight: FontWeight.bold,
@@ -596,7 +597,7 @@ class OrderDetailScreen extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    '₹${refund.toStringAsFixed(refund.truncateToDouble() == refund ? 0 : 2)}',
+                    '$currencySymbol${refund.toStringAsFixed(refund.truncateToDouble() == refund ? 0 : 2)}',
                     style: TextStyle(
                       color: Colors.green[700],
                       fontWeight: FontWeight.bold,
@@ -854,7 +855,7 @@ Widget _buildItemsList(Order order) {
                       Row(
                         children: [
                           Text(
-                            '₹${(sellingPrice * item.quantity).toStringAsFixed((sellingPrice * item.quantity).truncateToDouble() == (sellingPrice * item.quantity) ? 0 : 2)}',
+                            '$currencySymbol${(sellingPrice * item.quantity).toStringAsFixed((sellingPrice * item.quantity).truncateToDouble() == (sellingPrice * item.quantity) ? 0 : 2)}',
                             style: TextStyle(
                               color: isUnavailable ? Colors.grey[600] : Colors.black87,
                               fontSize: 13,
@@ -865,7 +866,7 @@ Widget _buildItemsList(Order order) {
                           if (savings > 0) ...[
                             const SizedBox(width: 8),
                             Text(
-                              '₹${(mrp * item.quantity).toStringAsFixed((mrp * item.quantity).truncateToDouble() == (mrp * item.quantity) ? 0 : 2)}',
+                              '$currencySymbol${(mrp * item.quantity).toStringAsFixed((mrp * item.quantity).truncateToDouble() == (mrp * item.quantity) ? 0 : 2)}',
                               style: TextStyle(
                                 color: Colors.grey[600],
                                 fontSize: 11,

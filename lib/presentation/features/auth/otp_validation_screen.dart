@@ -19,6 +19,7 @@ import '../../../di/auth_providers.dart';
 import '../../../domain/usecases/auth/request_otp.dart';
 import '../../../domain/usecases/auth/verify_otp.dart';
 import '../../../di/infrastructure_providers.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class OtpValidationScreen extends ConsumerStatefulWidget {
   final String mobileNumber;
@@ -192,7 +193,7 @@ class _OtpValidationScreenState extends ConsumerState<OtpValidationScreen> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = ResponsiveUtils.isSmall(context);
-    final formattedMobile = '+91 ${widget.mobileNumber}';
+    final formattedMobile = '${AppBranding.instance.dialCode} ${widget.mobileNumber}';
     
     return BackButtonWrapper(
       alternateRoute: '/auth/login?redirectRoute=${widget.redirectRoute ?? ''}',

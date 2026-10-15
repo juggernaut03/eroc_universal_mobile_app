@@ -6,6 +6,7 @@ import '../../../core/usecase/usecase.dart';
 import '../../entities/customer_address.dart';
 import '../../entities/pincode.dart';
 import '../../repositories/i_address_repository.dart';
+import '../../entities/mobile_number.dart';
 
 final class SaveAddressParams {
   final CustomerAddress address;
@@ -34,14 +35,14 @@ final class SaveAddress extends UseCase<void, SaveAddressParams> {
     if (address.fullName.trim().isEmpty) {
       fieldErrors['fullName'] = 'Please enter a name';
     }
-    if (!RegExp(r'^\d{10}$').hasMatch(address.mobileNumber.trim())) {
-      fieldErrors['mobileNumber'] = 'Enter a valid 10-digit mobile number';
+    if (!MobileNumber.isValid(address.mobileNumber)) {
+      fieldErrors['mobileNumber'] = 'Enter a valid mobile number';
     }
     if (address.line1.trim().isEmpty) {
       fieldErrors['line1'] = 'Please enter the address';
     }
     if (!Pincode.isValid(address.pincode)) {
-      fieldErrors['pincode'] = 'Enter a valid 6-digit pincode';
+      fieldErrors['pincode'] = 'Enter a valid postcode';
     }
 
     if (fieldErrors.isNotEmpty) {

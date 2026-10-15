@@ -28,7 +28,7 @@ final class SelectPincode extends UseCase<Serviceability, SelectPincodeParams> {
   Future<Result<Serviceability>> call(SelectPincodeParams params) async {
     final pincode = Pincode.tryParse(params.pincode);
     if (pincode == null) {
-      return const Err(ValidationFailure('Please enter a valid 6-digit pincode.'));
+      return const Err(ValidationFailure('Please enter a valid postcode.'));
     }
 
     final check = await _repository.checkServiceability(pincode);

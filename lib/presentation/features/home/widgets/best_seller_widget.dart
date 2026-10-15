@@ -543,7 +543,7 @@ Widget _buildProductsSection(BuildContext context, WidgetRef ref) {
               Row(
                 children: [
                   Text(
-                    "₹${product.ourPrice.toStringAsFixed(product.ourPrice.truncateToDouble() == product.ourPrice ? 0 : 2)}",
+                    "$currencySymbol${product.ourPrice.toStringAsFixed(product.ourPrice.truncateToDouble() == product.ourPrice ? 0 : 2)}",
                     style: AppTextStyles.bodyLarge.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -551,7 +551,7 @@ Widget _buildProductsSection(BuildContext context, WidgetRef ref) {
                   const SizedBox(width: 8),
                   if (product.productMrp > product.ourPrice)
                     Text(
-                      "₹${product.productMrp.toStringAsFixed(product.productMrp.truncateToDouble() == product.productMrp ? 0 : 2)}",
+                      "$currencySymbol${product.productMrp.toStringAsFixed(product.productMrp.truncateToDouble() == product.productMrp ? 0 : 2)}",
                       style: AppTextStyles.bodySmall.copyWith(
                         decoration: TextDecoration.lineThrough,
                         color: Colors.grey.shade600,

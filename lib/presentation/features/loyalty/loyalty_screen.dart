@@ -17,6 +17,7 @@ import '../../../data/models/loyalty_transaction_model.dart';
 import '../../../data/models/loyalty_way_to_earn_model.dart';
 import '../../providers/loyalty_provider.dart';
 import 'widgets/loyalty_membership_card.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class LoyaltyScreen extends ConsumerStatefulWidget {
   const LoyaltyScreen({super.key});
@@ -241,7 +242,7 @@ class _TierProgressCard extends StatelessWidget {
           if (tier.nextTierSpend != null) ...[
             const SizedBox(height: 6),
             Text(
-              '₹${tier.currentSpend.toStringAsFixed(0)} / ₹${tier.nextTierSpend!.toStringAsFixed(0)} to ${tier.nextTier}',
+              '$currencySymbol${tier.currentSpend.toStringAsFixed(0)} / $currencySymbol${tier.nextTierSpend!.toStringAsFixed(0)} to ${tier.nextTier}',
               style: TextStyle(color: AppColors.textSecondary, fontSize: 12),
             ),
           ],

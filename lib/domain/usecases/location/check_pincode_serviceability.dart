@@ -31,7 +31,7 @@ final class CheckPincodeServiceability
       CheckPincodeServiceabilityParams params) async {
     final pincode = Pincode.tryParse(params.pincode);
     if (pincode == null) {
-      return const Err(ValidationFailure('Please enter a valid 6-digit pincode.'));
+      return const Err(ValidationFailure('Please enter a valid postcode.'));
     }
     return _repository.checkServiceability(pincode);
   }

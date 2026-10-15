@@ -15,6 +15,7 @@ import 'package:meta/meta.dart';
 
 import 'cart.dart';
 import 'outlet.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 /// Why a cart cannot proceed to checkout.
 @immutable
@@ -52,7 +53,7 @@ final class BelowMinimumOrder extends CartProblem {
 
   @override
   String get message =>
-      'Add ₹${shortfall.toStringAsFixed(0)} more to reach the ₹${required.toStringAsFixed(0)} minimum order.';
+      'Add $currencySymbol${shortfall.toStringAsFixed(0)} more to reach the $currencySymbol${required.toStringAsFixed(0)} minimum order.';
 
   @override
   bool get isAutoFixable => false;

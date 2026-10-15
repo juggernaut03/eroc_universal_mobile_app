@@ -13,6 +13,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../../data/models/loyalty_redemption_model.dart';
 import '../../../providers/loyalty_provider.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 /// A compact row shown in the order summary: either "Apply a Reward" (tap to
 /// open the picker) or the applied voucher with a way to remove it.
@@ -70,7 +71,7 @@ class LoyaltyRewardRow extends ConsumerWidget {
                 Text(selected.rewardName, style: AppTextStyles.bodyMedium.copyWith(fontWeight: FontWeight.w600)),
                 if (discount == null)
                   Text(
-                    'Needs min. order ₹${selected.minimumOrderValue.toStringAsFixed(0)} — won\'t be applied',
+                    'Needs min. order $currencySymbol${selected.minimumOrderValue.toStringAsFixed(0)} — won\'t be applied',
                     style: AppTextStyles.bodySmall.copyWith(color: AppColors.error),
                   ),
               ],
@@ -78,7 +79,7 @@ class LoyaltyRewardRow extends ConsumerWidget {
           ),
           if (discount != null)
             Text(
-              '-₹${discount.toStringAsFixed(2)}',
+              '-$currencySymbol${discount.toStringAsFixed(2)}',
               style: AppTextStyles.bodyMedium.copyWith(color: AppColors.success, fontWeight: FontWeight.bold),
             ),
           IconButton(
@@ -183,9 +184,9 @@ class _RewardOptionTile extends ConsumerWidget {
       title: Text(redemption.rewardName, style: TextStyle(fontWeight: FontWeight.w600, color: eligible ? null : AppColors.textDisabled)),
       subtitle: eligible
           ? null
-          : Text('Minimum order ₹${redemption.minimumOrderValue.toStringAsFixed(0)}', style: TextStyle(color: AppColors.error, fontSize: 12)),
+          : Text('Minimum order $currencySymbol${redemption.minimumOrderValue.toStringAsFixed(0)}', style: TextStyle(color: AppColors.error, fontSize: 12)),
       trailing: eligible
-          ? Text('-₹${discount.toStringAsFixed(2)}', style: TextStyle(color: AppColors.success, fontWeight: FontWeight.bold))
+          ? Text('-$currencySymbol${discount.toStringAsFixed(2)}', style: TextStyle(color: AppColors.success, fontWeight: FontWeight.bold))
           : null,
       onTap: eligible
           ? () {

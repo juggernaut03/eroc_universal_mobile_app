@@ -7,6 +7,7 @@ import 'cart_provider.dart';
 import 'outlet_provider.dart';
 import '../../di/service_providers.dart';
 import '../../di/infrastructure_providers.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // Provider for the DeliveryChargesService
 
@@ -140,7 +141,7 @@ class DeliveryChargesNotifier extends StateNotifier<DeliveryChargesState> {
       );
 
       logger.log(
-          'Delivery charges updated - Distance: ${quote.distanceKm}km, Charge: ₹${quote.charge}, Free: ${quote.freeDelivery}');
+          'Delivery charges updated - Distance: ${quote.distanceKm}km, Charge: $currencySymbol${quote.charge}, Free: ${quote.freeDelivery}');
     } catch (e) {
       logger.error('Error calculating delivery charges: $e');
       // Strip Dart's "Exception: " wrapper — the underlying message (e.g.
@@ -190,7 +191,7 @@ class DeliveryChargesNotifier extends StateNotifier<DeliveryChargesState> {
         freeDeliveryEligible: false,
       );
       logger.log(
-          'Packing fee updated - ₹${quote.packingFee} (enabled: ${quote.packingFeeEnabled})');
+          'Packing fee updated - $currencySymbol${quote.packingFee} (enabled: ${quote.packingFeeEnabled})');
     } catch (e) {
       logger.error('Error calculating packing fee: $e');
       state = state.copyWith(

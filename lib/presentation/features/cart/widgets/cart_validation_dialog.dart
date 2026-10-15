@@ -4,6 +4,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../../data/services/cart_validator.dart';
 import 'package:flutter/foundation.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class CartValidationDialog extends StatelessWidget {
   final CartValidationResult result;
@@ -97,7 +98,7 @@ class CartValidationDialog extends StatelessWidget {
                 _buildIssueList(
                   "Price changes detected:",
                   result.priceChangedItems.map((item) =>
-                    "${item.product.productName}: ₹${_money(item.oldPrice)} → ₹${_money(item.newPrice)}"
+                    "${item.product.productName}: $currencySymbol${_money(item.oldPrice)} → $currencySymbol${_money(item.newPrice)}"
                   ).toList()
                 ),
 

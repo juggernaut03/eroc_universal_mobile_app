@@ -16,6 +16,7 @@ import '../../../core/result/result.dart';
 import '../../../di/auth_providers.dart';
 import '../../../domain/usecases/auth/request_otp.dart';
 import '../../../di/infrastructure_providers.dart';
+import 'package:patelmart/domain/entities/mobile_number.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   final String? redirectRoute;
@@ -81,7 +82,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       _isLoading = true;
     });
 
-    // The 10-digit rule used to be duplicated here and in otpRequestProvider.
+    // The mobile number rule used to be duplicated here and in otpRequestProvider.
     // It now lives in the RequestOtp use case and comes back as a
     // ValidationFailure, so there is one definition of "valid mobile number".
     final mobileNumber = _mobileController.text.trim();
@@ -222,10 +223,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         controller: _mobileController,
                         focusNode: _mobileFocusNode,
                         keyboardType: TextInputType.phone,
-                        maxLength: 10,
+                        maxLength: MobileNumber.maxLength,
                         style: AppTextStyles.bodyLarge,
                         decoration: InputDecoration(
-                          hintText: 'Enter 10-digit mobile number',
+                          hintText: 'Enter your mobile number',
                           prefixIcon: Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 12, 
@@ -233,7 +234,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             ),
                             margin: const EdgeInsets.only(right: 8),
                             child: Text(
-                              '+91',
+                              AppBranding.instance.dialCode,
                               style: AppTextStyles.bodyLarge.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),

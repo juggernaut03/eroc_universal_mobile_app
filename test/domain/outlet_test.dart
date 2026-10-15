@@ -148,8 +148,13 @@ void main() {
     });
 
     test('rejects wrong lengths', () {
-      expect(Pincode.tryParse('40001'), isNull);
+      expect(Pincode.tryParse('4000'), isNull);
       expect(Pincode.tryParse('4000012'), isNull);
+    });
+
+    test('accepts five-digit Malaysian postcodes, including a leading zero', () {
+      expect(Pincode.tryParse('50400')?.value, '50400');
+      expect(Pincode.tryParse('01000')?.value, '01000');
     });
 
     test('rejects non-numeric input', () {

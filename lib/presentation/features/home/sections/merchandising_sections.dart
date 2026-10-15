@@ -21,6 +21,7 @@ import '../../../providers/delivery_charges_provider.dart';
 import '../../../providers/order_history_provider.dart';
 import 'countdown_text.dart';
 import 'home_product_card.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // ----------------------------------------------------------------------
 
@@ -226,7 +227,7 @@ class FreeDeliveryProgressSection extends ConsumerWidget {
                 child: Text(
                   section.title.isNotEmpty
                       ? section.title
-                      : 'Add ₹${remaining.toStringAsFixed(0)} more for free delivery',
+                      : 'Add $currencySymbol${remaining.toStringAsFixed(0)} more for free delivery',
                   style: AppTextStyles.bodyMedium.copyWith(
                     fontWeight: FontWeight.w600,
                   ),

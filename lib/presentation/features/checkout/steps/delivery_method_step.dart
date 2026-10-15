@@ -13,6 +13,7 @@ import '../../../providers/cart_provider.dart';
 import '../../../providers/delivery_charges_provider.dart';
 // FACEBOOK PIXEL IMPORTS
 import '../checkout_models.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // Checkout step enum to track progress
 
@@ -298,7 +299,7 @@ class _DeliveryMethodStepState extends ConsumerState<DeliveryMethodStep> {
                 ),
               ),
               Text(
-                '₹${cartTotal.toStringAsFixed(2)}',
+                '$currencySymbol${cartTotal.toStringAsFixed(2)}',
                 style: AppTextStyles.bodyLarge.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -314,7 +315,7 @@ class _DeliveryMethodStepState extends ConsumerState<DeliveryMethodStep> {
                 style: AppTextStyles.bodySmall,
               ),
               Text(
-                deliveryFee > 0 ? '₹${deliveryFee.toStringAsFixed(2)}' : 'calculate checkout',
+                deliveryFee > 0 ? '$currencySymbol${deliveryFee.toStringAsFixed(2)}' : 'calculate checkout',
                 style: AppTextStyles.bodySmall.copyWith(
                   color: deliveryFee > 0 ? null : AppColors.primary,
                   fontWeight: deliveryFee > 0 ? null : FontWeight.bold,
@@ -327,7 +328,7 @@ class _DeliveryMethodStepState extends ConsumerState<DeliveryMethodStep> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                'You save: ₹${cartSavings.toStringAsFixed(2)}',
+                'You save: $currencySymbol${cartSavings.toStringAsFixed(2)}',
                 style: AppTextStyles.bodySmall.copyWith(
                   color: AppColors.primary,
                 ),

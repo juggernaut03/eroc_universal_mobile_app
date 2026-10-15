@@ -7,6 +7,7 @@
 // the real gateway. These types let the flow be driven by a fake.
 
 import 'package:meta/meta.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 /// How the customer is paying.
 enum PaymentMethod {
@@ -54,7 +55,7 @@ final class PaymentRequest {
   /// Never interpolates customer contact details — this reaches logs.
   @override
   String toString() =>
-      'PaymentRequest($orderReference, ₹${amount.toStringAsFixed(2)})';
+      'PaymentRequest($orderReference, $currencySymbol${amount.toStringAsFixed(2)})';
 }
 
 /// What the gateway came back with.

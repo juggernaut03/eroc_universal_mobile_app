@@ -2,22 +2,23 @@
 
 import 'package:meta/meta.dart';
 
-/// An Indian postal code.
+/// A postal code: an Indian pincode or a Malaysian postcode.
 ///
 /// A value object rather than a bare `String`, so a pincode cannot be confused
 /// with a store code, an order id or any other string in a call signature —
-/// and so the 6-digit rule is stated once.
+/// and so the format rule is stated once.
 @immutable
 final class Pincode {
   final String value;
 
   const Pincode._(this.value);
 
-  static final RegExp _format = RegExp(r'^[1-9]\d{5}$');
+  static final RegExp _format = RegExp(r'^(?:[1-9]\d{5}|\d{5})$');
 
-  /// Builds a pincode, or returns null when [raw] is not six digits.
+  /// Builds a pincode, or returns null when [raw] is not a valid postal code.
   ///
-  /// Indian pincodes never start with 0, which is why the pattern excludes it.
+  /// Indian pincodes are six digits and never start with 0; Malaysian
+  /// postcodes are five digits and may start with 0.
   static Pincode? tryParse(String? raw) {
     final trimmed = raw?.trim() ?? '';
     return _format.hasMatch(trimmed) ? Pincode._(trimmed) : null;

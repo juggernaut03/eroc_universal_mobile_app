@@ -11,6 +11,7 @@ import '../../../providers/cart_provider.dart';
 import '../../../providers/outlet_provider.dart';
 import '../../../../di/infrastructure_providers.dart';
 import '../../../providers/outlet_status_provider.dart'; // Add this import for outlet status
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class ProductItemWidget extends ConsumerStatefulWidget {
   final ProductModel product;
@@ -290,7 +291,7 @@ class _ProductItemWidgetState extends ConsumerState<ProductItemWidget> {
                   
                   // Package size and price per unit
                   Text(
-                    "${widget.product.packageSize} ${widget.product.packageUnit.toLowerCase()} (₹${pricePerUnit.toStringAsFixed(2)}/GM)",
+                    "${widget.product.packageSize} ${widget.product.packageUnit.toLowerCase()} ($currencySymbol${pricePerUnit.toStringAsFixed(2)}/GM)",
                     style: TextStyle(
                       color: Colors.grey.shade600,
                       fontSize: 12, // Reduced from 14
@@ -304,7 +305,7 @@ class _ProductItemWidgetState extends ConsumerState<ProductItemWidget> {
                   Row(
                     children: [
                       Text(
-                        "₹${widget.product.ourPrice.toStringAsFixed(widget.product.ourPrice.truncateToDouble() == widget.product.ourPrice ? 0 : 2)}",
+                        "$currencySymbol${widget.product.ourPrice.toStringAsFixed(widget.product.ourPrice.truncateToDouble() == widget.product.ourPrice ? 0 : 2)}",
                         style: const TextStyle(
                           fontSize: 16, // Reduced from 18
                           fontWeight: FontWeight.bold,
@@ -314,7 +315,7 @@ class _ProductItemWidgetState extends ConsumerState<ProductItemWidget> {
                       const SizedBox(width: 6), // Reduced from 8
                       
                       Text(
-                        "MRP₹${widget.product.productMrp.toStringAsFixed(widget.product.productMrp.truncateToDouble() == widget.product.productMrp ? 0 : 2)}",
+                        "MRP$currencySymbol${widget.product.productMrp.toStringAsFixed(widget.product.productMrp.truncateToDouble() == widget.product.productMrp ? 0 : 2)}",
                         style: TextStyle(
                           decoration: TextDecoration.lineThrough,
                           color: Colors.grey.shade600,

@@ -507,9 +507,9 @@ Future<void> _placeOrder() async {
     logger.log('=== ORDER DETAILS ===');
     logger.log('Delivery Mode: $deliveryMode');
     logger.log('Payment Mode: $paymentMode');
-    logger.log('Cart Total: ₹${cartTotal.toStringAsFixed(2)}');
-    logger.log('Delivery Charge: ₹${deliveryCharge.toStringAsFixed(2)}');
-    logger.log('Final Amount: ₹${finalAmount.toStringAsFixed(2)}');
+    logger.log('Cart Total: $currencySymbol${cartTotal.toStringAsFixed(2)}');
+    logger.log('Delivery Charge: $currencySymbol${deliveryCharge.toStringAsFixed(2)}');
+    logger.log('Final Amount: $currencySymbol${finalAmount.toStringAsFixed(2)}');
     logger.log('Customer: ${deliveryAddress.fullName}');
     
     // STEP 1: Mark order as "Payment Processing" - CREATE DATABASE ENTRY
@@ -521,7 +521,7 @@ Future<void> _placeOrder() async {
     if (kDebugMode) print('\n🔄 === STEP 1: CREATING DATABASE ENTRY === 🔄');
     if (kDebugMode) print('Temp Order ID: $tempOrderId');
     if (kDebugMode) print('Payment Mode: $paymentMode');
-    if (kDebugMode) print('Amount: ₹${finalAmount.toStringAsFixed(2)}');
+    if (kDebugMode) print('Amount: $currencySymbol${finalAmount.toStringAsFixed(2)}');
     if (kDebugMode) print('Customer: ${deliveryAddress.fullName}');
     if (kDebugMode) print('Database Status: Payment Processing');
     if (kDebugMode) print('🔄 === CALLING PAYMENT PROCESSING API === 🔄\n');
@@ -586,10 +586,10 @@ Future<void> _placeOrder() async {
       
       logger.log('=== STEP 2: PROCESSING ONLINE PAYMENT ===');
       logger.log('Payment Method: ${_selectedPaymentMethod!.displayName}');
-      logger.log('Final Amount: ₹${finalAmount.toStringAsFixed(2)}');
+      logger.log('Final Amount: $currencySymbol${finalAmount.toStringAsFixed(2)}');
       
       if (kDebugMode) print('\n💳 === STEP 2: INITIATING ONLINE PAYMENT === 💳');
-      if (kDebugMode) print('Amount: ₹${finalAmount.toStringAsFixed(2)}');
+      if (kDebugMode) print('Amount: $currencySymbol${finalAmount.toStringAsFixed(2)}');
       if (kDebugMode) print('Customer: ${deliveryAddress.fullName}');
       if (kDebugMode) print('Phone: ${deliveryAddress.mobileNumber}');
       if (kDebugMode) print('Email: ${deliveryAddress.emailId}');
@@ -1605,7 +1605,7 @@ Future<void> _placeOrder() async {
                   ),
                 ),
                 Text(
-                  '₹${cartTotal.toStringAsFixed(2)}',
+                  '$currencySymbol${cartTotal.toStringAsFixed(2)}',
                   style: AppTextStyles.bodyMedium,
                 ),
               ],
@@ -1681,7 +1681,7 @@ Future<void> _placeOrder() async {
                         ? 'Calculating...'
                         : (isFreeDelivery && distanceCharge <= 0)
                           ? 'FREE'
-                          : '₹${distanceCharge.toStringAsFixed(2)}',
+                          : '$currencySymbol${distanceCharge.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyMedium.copyWith(
                       color: (isFreeDelivery && distanceCharge <= 0) ? Colors.green : null,
                       fontWeight: (isFreeDelivery && distanceCharge <= 0) ? FontWeight.bold : null,
@@ -1716,7 +1716,7 @@ Future<void> _placeOrder() async {
                     ],
                   ),
                   Text(
-                    '₹${handlingFee.toStringAsFixed(2)}',
+                    '$currencySymbol${handlingFee.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyMedium,
                   ),
                 ],
@@ -1747,7 +1747,7 @@ Future<void> _placeOrder() async {
                     ],
                   ),
                   Text(
-                    '₹${packageFee.toStringAsFixed(2)}',
+                    '$currencySymbol${packageFee.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyMedium,
                   ),
                 ],
@@ -1778,7 +1778,7 @@ Future<void> _placeOrder() async {
                     ],
                   ),
                   Text(
-                    '₹${packingFee.toStringAsFixed(2)}',
+                    '$currencySymbol${packingFee.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyMedium,
                   ),
                 ],
@@ -1808,7 +1808,7 @@ Future<void> _placeOrder() async {
                     ],
                   ),
                   Text(
-                    '₹${cartSavings.toStringAsFixed(2)}',
+                    '$currencySymbol${cartSavings.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyMedium.copyWith(
                       color: Colors.green,
                     ),
@@ -1834,7 +1834,7 @@ Future<void> _placeOrder() async {
                   ),
                 ),
                 Text(
-                  '₹${finalAmount.toStringAsFixed(2)}',
+                  '$currencySymbol${finalAmount.toStringAsFixed(2)}',
                   style: AppTextStyles.bodyLarge.copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppColors.primary,
@@ -1921,10 +1921,11 @@ Future<void> _placeOrder() async {
                       style: const TextStyle(color: Colors.black87),
                     ),
                     const SizedBox(height: 4),
-                    Text(
-                      'Contact: +91 1234567890',
-                      style: const TextStyle(color: Colors.black87),
-                    ),
+                    if (outlet.contactPhone.isNotEmpty)
+                      Text(
+                        'Contact: ${outlet.contactPhone}',
+                        style: const TextStyle(color: Colors.black87),
+                      ),
                     const SizedBox(height: 8),
                     Text(
                       'Working Hours: ${outlet.openTime}',

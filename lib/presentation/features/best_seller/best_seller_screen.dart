@@ -15,6 +15,7 @@ import 'package:patelmart/presentation/providers/outlet_provider.dart';
 import 'package:patelmart/presentation/providers/outlet_status_provider.dart';
 import '../cart/widgets/persistent_cart_widget.dart';
 import '../../../di/infrastructure_providers.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class BestSellerScreen extends ConsumerStatefulWidget {
   final int bestSellerId;
@@ -360,7 +361,7 @@ class _BestSellerProductCard extends ConsumerWidget {
                   
                   // Package size and price per unit
                   Text(
-                    "${product.packageSize} ${product.packageUnit.toLowerCase()} (₹${pricePerUnit.toStringAsFixed(2)}/GM)",
+                    "${product.packageSize} ${product.packageUnit.toLowerCase()} ($currencySymbol${pricePerUnit.toStringAsFixed(2)}/GM)",
                     style: TextStyle(
                       color: Colors.grey.shade600,
                       fontSize: 14,
@@ -373,7 +374,7 @@ class _BestSellerProductCard extends ConsumerWidget {
                   Row(
                     children: [
                       Text(
-                        "₹${product.ourPrice.toStringAsFixed(product.ourPrice.truncateToDouble() == product.ourPrice ? 0 : 2)}",
+                        "$currencySymbol${product.ourPrice.toStringAsFixed(product.ourPrice.truncateToDouble() == product.ourPrice ? 0 : 2)}",
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -383,7 +384,7 @@ class _BestSellerProductCard extends ConsumerWidget {
                       const SizedBox(width: 8),
                       
                       Text(
-                        "MRP₹${product.productMrp.toStringAsFixed(product.productMrp.truncateToDouble() == product.productMrp ? 0 : 2)}",
+                        "MRP$currencySymbol${product.productMrp.toStringAsFixed(product.productMrp.truncateToDouble() == product.productMrp ? 0 : 2)}",
                         style: TextStyle(
                           decoration: TextDecoration.lineThrough,
                           color: Colors.grey.shade600,

@@ -18,6 +18,7 @@ import '../../../../core/widgets/cached_network_image_widget.dart';
 import '../../../../data/models/product_model.dart';
 import '../../../providers/cart_provider.dart';
 import '../../../providers/outlet_status_provider.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 /// Card footprint, shared with the rails so a rail's height is derived from the
 /// card rather than guessed. A rail that guesses tall leaves the dead band of
@@ -110,7 +111,7 @@ class HomeProductCard extends ConsumerWidget {
                         textBaseline: TextBaseline.alphabetic,
                         children: [
                           Text(
-                            '₹${product.ourPrice.toStringAsFixed(0)}',
+                            '$currencySymbol${product.ourPrice.toStringAsFixed(0)}',
                             style: AppTextStyles.bodyMedium.copyWith(
                               fontSize: 13,
                               height: 1.2,
@@ -122,7 +123,7 @@ class HomeProductCard extends ConsumerWidget {
                             const SizedBox(width: 5),
                             Flexible(
                               child: Text(
-                                '₹${product.productMrp.toStringAsFixed(0)}',
+                                '$currencySymbol${product.productMrp.toStringAsFixed(0)}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: AppTextStyles.bodySmall.copyWith(

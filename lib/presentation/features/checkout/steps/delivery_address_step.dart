@@ -14,6 +14,7 @@ import 'package:patelmart/presentation/providers/address_provider.dart' as addre
 // FACEBOOK PIXEL IMPORTS
 import '../../../../di/infrastructure_providers.dart';
 import '../checkout_models.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // Checkout step enum to track progress
 
@@ -467,7 +468,7 @@ Widget build(BuildContext context) {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            'Delivery Fee: ₹${deliveryChargesState.deliveryCharge.toStringAsFixed(2)}',
+                            'Delivery Fee: $currencySymbol${deliveryChargesState.deliveryCharge.toStringAsFixed(2)}',
                             style: AppTextStyles.bodySmall.copyWith(
                               color: AppColors.textSecondary,
                             ),
@@ -564,7 +565,7 @@ Widget build(BuildContext context) {
                   style: AppTextStyles.bodyMedium,
                 ),
                 Text(
-                  '₹${cartTotal.toStringAsFixed(2)}',
+                  '$currencySymbol${cartTotal.toStringAsFixed(2)}',
                   style: AppTextStyles.bodyMedium,
                 ),
               ],
@@ -634,7 +635,7 @@ Widget build(BuildContext context) {
                     ? 'Calculating...'
                     : (isFreeDelivery && distanceCharge <= 0)
                       ? 'FREE'
-                      : '₹${distanceCharge.toStringAsFixed(2)}',
+                      : '$currencySymbol${distanceCharge.toStringAsFixed(2)}',
                   style: AppTextStyles.bodyMedium.copyWith(
                     color: (isFreeDelivery && distanceCharge <= 0) ? Colors.green : null,
                     fontWeight: (isFreeDelivery && distanceCharge <= 0) ? FontWeight.bold : null,
@@ -665,7 +666,7 @@ Widget build(BuildContext context) {
                     ],
                   ),
                   Text(
-                    '₹${handlingFee.toStringAsFixed(2)}',
+                    '$currencySymbol${handlingFee.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyMedium,
                   ),
                 ],
@@ -693,7 +694,7 @@ Widget build(BuildContext context) {
                     ],
                   ),
                   Text(
-                    '₹${packageFee.toStringAsFixed(2)}',
+                    '$currencySymbol${packageFee.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyMedium,
                   ),
                 ],
@@ -753,7 +754,7 @@ Widget build(BuildContext context) {
                     ],
                   ),
                   Text(
-                    '₹${cartSavings.toStringAsFixed(2)}',
+                    '$currencySymbol${cartSavings.toStringAsFixed(2)}',
                     style: AppTextStyles.bodyMedium.copyWith(
                       color: Colors.green,
                     ),
@@ -775,7 +776,7 @@ Widget build(BuildContext context) {
                   ),
                 ),
                 Text(
-                  '₹${finalTotal.toStringAsFixed(2)}',
+                  '$currencySymbol${finalTotal.toStringAsFixed(2)}',
                   style: AppTextStyles.bodyLarge.copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppColors.primary,

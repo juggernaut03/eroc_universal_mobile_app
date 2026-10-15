@@ -6,6 +6,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../providers/cart_provider.dart';
 import '../../../providers/steal_deals_provider.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class CartItemWidget extends ConsumerWidget {
   final CartItem cartItem;
@@ -181,7 +182,7 @@ class CartItemWidget extends ConsumerWidget {
                           children: [
                             // You pay
                             Text(
-                              'You Pay ₹${totalPrice.toStringAsFixed(totalPrice.truncateToDouble() == totalPrice ? 0 : 2)}',
+                              'You Pay $currencySymbol${totalPrice.toStringAsFixed(totalPrice.truncateToDouble() == totalPrice ? 0 : 2)}',
                               style: AppTextStyles.bodyMedium.copyWith(
                                 fontWeight: FontWeight.w600,
                               ),
@@ -190,7 +191,7 @@ class CartItemWidget extends ConsumerWidget {
                             // You save
                             if (savings > 0)
                               Text(
-                                'You Save ₹${savings.toStringAsFixed(savings.truncateToDouble() == savings ? 0 : 2)}',
+                                'You Save $currencySymbol${savings.toStringAsFixed(savings.truncateToDouble() == savings ? 0 : 2)}',
                                 style: AppTextStyles.bodySmall.copyWith(
                                   color: Colors.green,
                                   fontWeight: FontWeight.w500,

@@ -17,6 +17,7 @@ import '../../facebook_pixel/facebook_pixel_provider.dart';
 import '../../di/infrastructure_providers.dart';
 import '../../domain/entities/cart.dart';
 import 'outlet_provider.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 export '../../data/models/cart_item.dart' show CartItem;
 
@@ -290,7 +291,7 @@ class CartNotifier extends StateNotifier<Cart> {
         line.product.copyWith(sellingPrice: newPrice),
         line.quantity,
       );
-      _logger.log('Updated price for ${line.product.name} to ₹$newPrice');
+      _logger.log('Updated price for ${line.product.name} to $currencySymbol$newPrice');
     });
 
     quantityUpdates.forEach((pCode, newQuantity) {
@@ -615,8 +616,8 @@ class CartNotifier extends StateNotifier<Cart> {
       'total_price': total,
       'total_mrp': totalMrp,
       'total_savings': savings,
-      'formatted_total': '₹${total.toStringAsFixed(2)}',
-      'formatted_savings': '₹${savings.toStringAsFixed(2)}',
+      'formatted_total': '$currencySymbol${total.toStringAsFixed(2)}',
+      'formatted_savings': '$currencySymbol${savings.toStringAsFixed(2)}',
       'items': state.lines.map((line) => {
         'pcode': line.product.code,
         'name': line.product.name,
@@ -732,8 +733,8 @@ final cartSummaryProvider = Provider<Map<String, dynamic>>((ref) {
       'count': 0,
       'item_count': 0,
       'is_empty': true,
-      'formatted_total': '₹0.00',
-      'formatted_savings': '₹0.00',
+      'formatted_total': '${currencySymbol}0.00',
+      'formatted_savings': '${currencySymbol}0.00',
     };
   }
   

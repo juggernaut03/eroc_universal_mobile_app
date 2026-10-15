@@ -58,6 +58,15 @@ class AppBranding {
   String appName = _defAppName;
   String logoUrl = '';
 
+  /// ISO currency code from the store config (`currency`), e.g. INR or MYR.
+  String currencyCode = 'INR';
+
+  /// Symbol shown before prices, e.g. RM or ₹.
+  String get currencySymbol => currencyCode == 'MYR' ? 'RM' : '₹';
+
+  /// Country calling code shown before mobile numbers.
+  String get dialCode => currencyCode == 'MYR' ? '+60' : '+91';
+
   // ---- Splash screen (admin panel: Mobile App > App Settings) ----
 
   /// Logo shown on the splash screen; falls back to [logoUrl] when empty.
@@ -122,6 +131,8 @@ class AppBranding {
     b.info = _hex(config['info_color']) ?? _defInfo;
     b.fontFamily = (config['font_family'] ?? '').toString().trim();
     b.logoUrl = (config['logo_url'] ?? '').toString().trim();
+    final currency = (config['currency'] ?? '').toString().trim().toUpperCase();
+    b.currencyCode = currency.isNotEmpty ? currency : 'INR';
 
     b.splashLogoUrl = (config['splash_logo_url'] ?? '').toString().trim();
     b.splashLogoSize = _clampedDouble(
@@ -257,3 +268,6 @@ class AppBranding {
     return hsl.withLightness(0.90).withSaturation(0.55).toColor();
   }
 }
+
+/// Currency symbol of the current store, for use in price strings.
+String get currencySymbol => AppBranding.instance.currencySymbol;

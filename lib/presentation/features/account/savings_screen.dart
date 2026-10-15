@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../providers/savings_providers.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // Provider for the profile repository (removed local definition, use the global one from profile_repository.dart)
 
@@ -252,9 +253,9 @@ class SavingsScreen extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  '₹',
-                  style: TextStyle(
+                Text(
+                  currencySymbol,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 42,
                     fontWeight: FontWeight.bold,
@@ -289,7 +290,7 @@ class SavingsScreen extends ConsumerWidget {
               Expanded(
                 child: _buildStatCard(
                   title: 'Total Spent',
-                  value: '₹${NumberFormat('#,##,###').format(stats.totalSpent.toInt())}',
+                  value: '$currencySymbol${NumberFormat('#,##,###').format(stats.totalSpent.toInt())}',
                   icon: Icons.account_balance_wallet_rounded,
                   color: const Color(0xFF4CAF50),
                 ),
@@ -298,7 +299,7 @@ class SavingsScreen extends ConsumerWidget {
               Expanded(
                 child: _buildStatCard(
                   title: 'MRP Value',
-                  value: '₹${NumberFormat('#,##,###').format(stats.totalMrp.toInt())}',
+                  value: '$currencySymbol${NumberFormat('#,##,###').format(stats.totalMrp.toInt())}',
                   icon: Icons.local_offer_rounded,
                   color: const Color(0xFF2196F3),
                 ),
@@ -320,7 +321,7 @@ class SavingsScreen extends ConsumerWidget {
               Expanded(
                 child: _buildStatCard(
                   title: 'Avg Savings',
-                  value: '₹${NumberFormat('#,###').format(stats.avgSavingsPerOrder.toInt())}',
+                  value: '$currencySymbol${NumberFormat('#,###').format(stats.avgSavingsPerOrder.toInt())}',
                   icon: Icons.savings_rounded,
                   color: const Color(0xFF9C27B0),
                 ),

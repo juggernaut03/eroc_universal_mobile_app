@@ -330,7 +330,7 @@ class PaymentService implements IPaymentGateway {
     if (kDebugMode) print('Payment ID: ${response.paymentId}');
     if (kDebugMode) print('Order ID: ${response.orderId}');
     // Signature intentionally not logged: it is a payment credential.
-    if (kDebugMode) print('Amount: ₹${_currentPaymentAmount?.toStringAsFixed(2)}');
+    if (kDebugMode) print('Amount: $currencySymbol${_currentPaymentAmount?.toStringAsFixed(2)}');
     if (kDebugMode) print('Customer: $_currentCustomerName ($_currentCustomerPhone)');
     if (kDebugMode) print('Email: $_currentCustomerEmail');
     if (kDebugMode) print('Created Razorpay Order ID: $_currentRazorpayOrderId');
@@ -545,7 +545,7 @@ class PaymentService implements IPaymentGateway {
       _currentTempOrderId = orderIdToUse; // STORE: Temp order ID for tracking
       
       if (kDebugMode) print('\n🚀 === STARTING PAYMENT PROCESS === 🚀');
-      if (kDebugMode) print('Amount: ₹${amount.toStringAsFixed(2)}');
+      if (kDebugMode) print('Amount: $currencySymbol${amount.toStringAsFixed(2)}');
       if (kDebugMode) print('Customer: $customerName');
       if (kDebugMode) print('Phone: ${customerPhone ?? "Not provided"}');
       if (kDebugMode) print('Email: ${customerEmail ?? "Not provided"}');

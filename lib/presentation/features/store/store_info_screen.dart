@@ -7,6 +7,7 @@ import '../../../core/constants/app_text_styles.dart';
 import '../../../data/models/outlet_model.dart';
 import '../../providers/outlet_provider.dart';
 import '../../providers/location_provider.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class StoreInfoScreen extends ConsumerWidget {
   const StoreInfoScreen({super.key});
@@ -156,7 +157,7 @@ class StoreInfoScreen extends ConsumerWidget {
                   _buildInfoRow(
                     Icons.shopping_bag_outlined,
                     'Minimum Order',
-                    '₹${outlet.minOrderAmount}',
+                    '$currencySymbol${outlet.minOrderAmount}',
                   ),
                   const SizedBox(height: 12),
                   _buildInfoRow(

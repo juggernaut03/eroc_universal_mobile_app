@@ -13,6 +13,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../../data/models/cart_offer_model.dart';
 import '../../../providers/steal_deals_provider.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 /// A compact row shown in the order summary: either "Apply an offer" (tap to
 /// open the picker, only shown when at least one unlocked offer exists) or
@@ -59,7 +60,7 @@ class CartOfferRow extends ConsumerWidget {
             child: Text(selected.title, style: AppTextStyles.bodyMedium.copyWith(fontWeight: FontWeight.w600)),
           ),
           Text(
-            '-₹${selected.effectiveDiscount.toStringAsFixed(2)}',
+            '-$currencySymbol${selected.effectiveDiscount.toStringAsFixed(2)}',
             style: AppTextStyles.bodyMedium.copyWith(color: AppColors.success, fontWeight: FontWeight.bold),
           ),
           IconButton(
@@ -152,7 +153,7 @@ class _OfferOptionTile extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 4),
-            Text('Add ₹${offer.remainingAmount.toStringAsFixed(0)} more to unlock',
+            Text('Add $currencySymbol${offer.remainingAmount.toStringAsFixed(0)} more to unlock',
                 style: TextStyle(color: AppColors.error, fontSize: 12)),
           ],
         ),
@@ -164,7 +165,7 @@ class _OfferOptionTile extends ConsumerWidget {
       title: Text(offer.title, style: const TextStyle(fontWeight: FontWeight.w600)),
       subtitle: offer.description.isNotEmpty ? Text(offer.description) : null,
       trailing: Text(
-        '-₹${offer.effectiveDiscount.toStringAsFixed(2)}',
+        '-$currencySymbol${offer.effectiveDiscount.toStringAsFixed(2)}',
         style: TextStyle(color: AppColors.success, fontWeight: FontWeight.bold),
       ),
       onTap: () {

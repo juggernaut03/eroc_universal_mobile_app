@@ -23,6 +23,7 @@ import 'package:patelmart/presentation/providers/cart_validator_provider.dart'
 import '../../../di/auth_providers.dart';
 import '../../../di/infrastructure_providers.dart';
 import '../../providers/cart_validation_policy_provider.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class CartScreen extends ConsumerStatefulWidget {
   const CartScreen({super.key});
@@ -250,7 +251,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                   showAppSnackBar(
                     SnackBar(
                       content: Text(
-                        'You have $cartCount item${cartCount > 1 ? 's' : ''} in your cart (₹${cartTotal.toStringAsFixed(cartTotal.truncateToDouble() == cartTotal ? 0 : 2)})',
+                        'You have $cartCount item${cartCount > 1 ? 's' : ''} in your cart ($currencySymbol${cartTotal.toStringAsFixed(cartTotal.truncateToDouble() == cartTotal ? 0 : 2)})',
                       ),
                       duration: const Duration(seconds: 2),
                       backgroundColor: AppColors.primary,
@@ -326,14 +327,14 @@ class _CartScreenState extends ConsumerState<CartScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Savings ₹${savings.toStringAsFixed(savings.truncateToDouble() == savings ? 0 : 2)}',
+                'Savings $currencySymbol${savings.toStringAsFixed(savings.truncateToDouble() == savings ? 0 : 2)}',
                 style: AppTextStyles.bodyMedium.copyWith(
                   color: Colors.green,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               Text(
-                'Cart Total ₹${total.toStringAsFixed(total.truncateToDouble() == total ? 0 : 2)}',
+                'Cart Total $currencySymbol${total.toStringAsFixed(total.truncateToDouble() == total ? 0 : 2)}',
                 style: AppTextStyles.bodyLarge.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -601,7 +602,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Text(
-                'Add items worth ₹${(minimumOrderValue - cartTotal).toStringAsFixed((minimumOrderValue - cartTotal).truncateToDouble() == (minimumOrderValue - cartTotal) ? 0 : 2)} more to place order',
+                'Add items worth $currencySymbol${(minimumOrderValue - cartTotal).toStringAsFixed((minimumOrderValue - cartTotal).truncateToDouble() == (minimumOrderValue - cartTotal) ? 0 : 2)} more to place order',
                 style: AppTextStyles.bodySmall.copyWith(
                   color: Colors.red,
                   fontWeight: FontWeight.w500,

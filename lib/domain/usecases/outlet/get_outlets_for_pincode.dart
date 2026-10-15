@@ -18,7 +18,7 @@ final class GetOutletsForPincodeParams extends UseCaseParams {
 
 /// Lists the outlets that serve a pincode.
 ///
-/// Takes a raw string and validates it here, so the 6-digit rule is enforced
+/// Takes a raw string and validates it here, so the postcode rule is enforced
 /// once rather than re-checked by each screen.
 final class GetOutletsForPincode
     extends UseCase<List<Outlet>, GetOutletsForPincodeParams> {
@@ -30,7 +30,7 @@ final class GetOutletsForPincode
   Future<Result<List<Outlet>>> call(GetOutletsForPincodeParams params) async {
     final pincode = Pincode.tryParse(params.pincode);
     if (pincode == null) {
-      return const Err(ValidationFailure('Please enter a valid 6-digit pincode.'));
+      return const Err(ValidationFailure('Please enter a valid postcode.'));
     }
     return _repository.outletsForPincode(pincode);
   }

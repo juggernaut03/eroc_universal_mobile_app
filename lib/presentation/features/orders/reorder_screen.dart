@@ -15,6 +15,7 @@ import '../../providers/location_provider.dart';
 import 'package:patelmart/core/widgets/brand_logo.dart';
 import '../../../di/infrastructure_providers.dart';
 import '../../providers/orders_screen_providers.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // Define ReorderItem at the top level
 class ReorderItem {
@@ -736,7 +737,7 @@ class _ReorderScreenState extends ConsumerState<ReorderScreen>
                   title: const Text('View Cart'),
                   trailing: cartCount > 0
                       ? Text(
-                          '₹${cartTotal.toStringAsFixed(2)} (${cartCount.toString()})',
+                          '$currencySymbol${cartTotal.toStringAsFixed(2)} (${cartCount.toString()})',
                           style: TextStyle(
                             color: AppColors.primary,
                             fontWeight: FontWeight.bold,
@@ -1135,7 +1136,7 @@ class _ReorderProductItemWidgetState extends ConsumerState<_ReorderProductItemWi
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    "${widget.reorderItem.product.packageSize} ${widget.reorderItem.product.packageUnit.toLowerCase()} (₹${pricePerUnit.toStringAsFixed(2)}/GM)",
+                    "${widget.reorderItem.product.packageSize} ${widget.reorderItem.product.packageUnit.toLowerCase()} ($currencySymbol${pricePerUnit.toStringAsFixed(2)}/GM)",
                     style: TextStyle(
                       color: Colors.grey.shade600,
                       fontSize: 12,
@@ -1156,7 +1157,7 @@ class _ReorderProductItemWidgetState extends ConsumerState<_ReorderProductItemWi
                   Row(
                     children: [
                       Text(
-                        "₹${widget.reorderItem.product.ourPrice.toStringAsFixed(widget.reorderItem.product.ourPrice.truncateToDouble() == widget.reorderItem.product.ourPrice ? 0 : 2)}",
+                        "$currencySymbol${widget.reorderItem.product.ourPrice.toStringAsFixed(widget.reorderItem.product.ourPrice.truncateToDouble() == widget.reorderItem.product.ourPrice ? 0 : 2)}",
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -1164,7 +1165,7 @@ class _ReorderProductItemWidgetState extends ConsumerState<_ReorderProductItemWi
                       ),
                       const SizedBox(width: 6),
                       Text(
-                        "MRP₹${widget.reorderItem.product.productMrp.toStringAsFixed(widget.reorderItem.product.productMrp.truncateToDouble() == widget.reorderItem.product.productMrp ? 0 : 2)}",
+                        "MRP$currencySymbol${widget.reorderItem.product.productMrp.toStringAsFixed(widget.reorderItem.product.productMrp.truncateToDouble() == widget.reorderItem.product.productMrp ? 0 : 2)}",
                         style: TextStyle(
                           decoration: TextDecoration.lineThrough,
                           color: Colors.grey.shade600,

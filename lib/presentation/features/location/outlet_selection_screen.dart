@@ -10,6 +10,7 @@ import '../../providers/outlet_provider.dart';
 import '../../providers/launch_flow_provider.dart';
 import '../../providers/home_refresh_provider.dart';
 import '../../../di/infrastructure_providers.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class OutletSelectionScreen extends ConsumerStatefulWidget {
   final String pincode;
@@ -390,7 +391,7 @@ class _OutletSelectionScreenState extends ConsumerState<OutletSelectionScreen> {
                 const SizedBox(height: 8),
                 _buildInfoItem(
                   Icons.shopping_bag,
-                  'Min. Order: ₹${outlet.minOrderAmount}',
+                  'Min. Order: $currencySymbol${outlet.minOrderAmount}',
                 ),
               ],
             ),

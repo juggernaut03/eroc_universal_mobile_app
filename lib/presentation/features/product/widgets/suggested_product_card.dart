@@ -8,6 +8,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../data/models/product_model.dart';
 import '../../../providers/cart_provider.dart';
 import '../../../providers/outlet_status_provider.dart'; // Import for outlet status
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class SuggestedProductCard extends ConsumerWidget {
   final ProductModel product;
@@ -152,7 +153,7 @@ class SuggestedProductCard extends ConsumerWidget {
                     Row(
                       children: [
                         Text(
-                          '₹${product.ourPrice.toStringAsFixed(product.ourPrice.truncateToDouble() == product.ourPrice ? 0 : 2)}',
+                          '$currencySymbol${product.ourPrice.toStringAsFixed(product.ourPrice.truncateToDouble() == product.ourPrice ? 0 : 2)}',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 13,
@@ -162,7 +163,7 @@ class SuggestedProductCard extends ConsumerWidget {
                         if (hasDiscount) ...[
                           const SizedBox(width: 6),
                           Text(
-                            '₹${product.productMrp.toStringAsFixed(product.productMrp.truncateToDouble() == product.productMrp ? 0 : 2)}',
+                            '$currencySymbol${product.productMrp.toStringAsFixed(product.productMrp.truncateToDouble() == product.productMrp ? 0 : 2)}',
                             style: TextStyle(
                               decoration: TextDecoration.lineThrough,
                               color: Colors.grey[500],

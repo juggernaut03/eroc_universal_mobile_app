@@ -226,7 +226,7 @@ class HelpSupportScreen extends ConsumerWidget {
                               _buildInfoRow(
                                 Icons.shopping_cart,
                                 'Minimum Order',
-                                '₹${storeDetails.minOrderAmount}',
+                                '$currencySymbol${storeDetails.minOrderAmount}',
                               ),
                             ],
                           ),

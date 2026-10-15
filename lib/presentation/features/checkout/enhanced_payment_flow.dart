@@ -55,7 +55,7 @@ class EnhancedPaymentFlow {
       
       logger.log('=== STEP 1: CREATING DATABASE ENTRY WITH PAYMENT PROCESSING STATUS ===');
       logger.log('Temp Order ID: $tempOrderId');
-      logger.log('Final Amount: ₹${finalAmount.toStringAsFixed(2)}');
+      logger.log('Final Amount: $currencySymbol${finalAmount.toStringAsFixed(2)}');
       logger.log('Payment Mode: $paymentMode');
       logger.log('Customer: ${deliveryAddress.fullName}');
       
@@ -101,7 +101,7 @@ class EnhancedPaymentFlow {
         if (kDebugMode) print('Order ID: ${paymentProcessingResult.orderId ?? "Generated"}');
         if (kDebugMode) print('Database Status: Payment Processing');
         if (kDebugMode) print('Customer: ${deliveryAddress.fullName}');
-        if (kDebugMode) print('Amount: ₹${finalAmount.toStringAsFixed(2)}');
+        if (kDebugMode) print('Amount: $currencySymbol${finalAmount.toStringAsFixed(2)}');
         if (kDebugMode) print('Payment Mode: $paymentMode');
         if (kDebugMode) print('✅ === READY FOR PAYMENT === ✅\n');
         
@@ -164,7 +164,7 @@ class EnhancedPaymentFlow {
       final logger = ref.read(loggerProvider);
       
       logger.log('=== STEP 2: PROCESSING ONLINE PAYMENT ===');
-      logger.log('Amount: ₹${amount.toStringAsFixed(2)}');
+      logger.log('Amount: $currencySymbol${amount.toStringAsFixed(2)}');
       logger.log('Customer: ${deliveryAddress.fullName}');
       logger.log('Payment Method: Online Payment');
       
@@ -172,7 +172,7 @@ class EnhancedPaymentFlow {
       ref.read(orderProcessStatusProvider.notifier).state = OrderProcessStatus.processingPayment;
       
       if (kDebugMode) print('\n💳 === INITIATING ONLINE PAYMENT === 💳');
-      if (kDebugMode) print('Amount: ₹${amount.toStringAsFixed(2)}');
+      if (kDebugMode) print('Amount: $currencySymbol${amount.toStringAsFixed(2)}');
       if (kDebugMode) print('Customer: ${deliveryAddress.fullName}');
       if (kDebugMode) print('Phone: ${deliveryAddress.mobileNumber}');
       if (kDebugMode) print('Email: ${deliveryAddress.emailId}');
@@ -205,7 +205,7 @@ class EnhancedPaymentFlow {
         if (kDebugMode) print('Payment ID: ${paymentResult.paymentId}');
         if (kDebugMode) print('Status: ${paymentResult.status}');
         if (kDebugMode) print('Method: ${paymentResult.method}');
-        if (kDebugMode) print('Amount: ₹${paymentResult.amount?.toStringAsFixed(2)}');
+        if (kDebugMode) print('Amount: $currencySymbol${paymentResult.amount?.toStringAsFixed(2)}');
         if (kDebugMode) print('💳 === READY FOR ORDER UPDATE === 💳\n');
         
         return paymentResult;
@@ -552,7 +552,7 @@ class EnhancedPaymentFlow {
       if (kDebugMode) print('');
       if (kDebugMode) print('Order Details:');
       if (kDebugMode) print('- Temp Order ID: $tempOrderId');
-      if (kDebugMode) print('- Amount: ₹${finalAmount.toStringAsFixed(2)}');
+      if (kDebugMode) print('- Amount: $currencySymbol${finalAmount.toStringAsFixed(2)}');
       if (kDebugMode) print('- Payment: $paymentMode');
       if (kDebugMode) print('- Delivery: $deliveryMode');
       if (kDebugMode) print('- Customer: ${deliveryAddress.fullName}');

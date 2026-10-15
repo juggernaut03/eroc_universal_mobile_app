@@ -11,6 +11,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/error_widgets.dart';
 import '../../providers/loyalty_provider.dart';
 import '../../../data/models/loyalty_reward_model.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 class LoyaltyRewardsScreen extends ConsumerWidget {
   const LoyaltyRewardsScreen({super.key});
@@ -84,7 +85,7 @@ class _RewardCard extends ConsumerWidget {
   String get _valueLabel {
     if (reward.type == 'PERCENTAGE_DISCOUNT') return '${reward.discountValue.toStringAsFixed(0)}% OFF';
     if (reward.type == 'FREE_SHIPPING') return 'Free Shipping';
-    return '₹${reward.discountValue.toStringAsFixed(0)} OFF';
+    return '$currencySymbol${reward.discountValue.toStringAsFixed(0)} OFF';
   }
 
   @override
@@ -111,7 +112,7 @@ class _RewardCard extends ConsumerWidget {
                 Text(_valueLabel, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
                 const SizedBox(height: 2),
                 if (reward.minimumOrderValue > 0)
-                  Text('Min order ₹${reward.minimumOrderValue.toStringAsFixed(0)}', style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+                  Text('Min order $currencySymbol${reward.minimumOrderValue.toStringAsFixed(0)}', style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
                 const SizedBox(height: 4),
                 Text('${reward.pointsRequired} points', style: TextStyle(color: AppColors.textSecondary, fontSize: 12.5, fontWeight: FontWeight.w600)),
               ],

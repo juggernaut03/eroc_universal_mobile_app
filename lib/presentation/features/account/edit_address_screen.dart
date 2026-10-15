@@ -23,6 +23,9 @@ import 'package:patelmart/core/utils/input_formatters.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../di/repository_providers.dart';
 import '../../../di/infrastructure_providers.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
+import 'package:patelmart/domain/entities/mobile_number.dart';
+import 'package:patelmart/domain/entities/pincode.dart';
 
 
 class EditAddressScreen extends ConsumerStatefulWidget {
@@ -303,8 +306,8 @@ class _EditAddressScreenState extends ConsumerState<EditAddressScreen> {
       
       // Format mobile number (remove prefix if present)
       String mobileNumber = _contactNumberController.text;
-      if (mobileNumber.startsWith('+91 | ')) {
-        mobileNumber = mobileNumber.replaceAll('+91 | ', '');
+      if (mobileNumber.startsWith(_dialPrefix)) {
+        mobileNumber = mobileNumber.replaceAll(_dialPrefix, '');
       }
 
       // Build the updated address and save via the universal backend.
@@ -506,8 +509,8 @@ class _EditAddressScreenState extends ConsumerState<EditAddressScreen> {
                       if (value == null || value.isEmpty) {
                         return 'Pincode is required';
                       }
-                      if (value.length != 6) {
-                        return 'Pincode must be 6 digits';
+                      if (!Pincode.isValid(value)) {
+                        return 'Please enter a valid postcode';
                       }
                       return null;
                     },
@@ -586,15 +589,15 @@ class _EditAddressScreenState extends ConsumerState<EditAddressScreen> {
                       }
                       // Remove prefix if present
                       String mobileNumber = value;
-                      if (mobileNumber.startsWith('+91 | ')) {
-                        mobileNumber = mobileNumber.replaceAll('+91 | ', '');
+                      if (mobileNumber.startsWith(_dialPrefix)) {
+                        mobileNumber = mobileNumber.replaceAll(_dialPrefix, '');
                       }
-                      if (mobileNumber.length != 10) {
-                        return 'Please enter a valid 10-digit mobile number';
+                      if (!MobileNumber.isValid(mobileNumber)) {
+                        return 'Please enter a valid mobile number';
                       }
                       return null;
                     },
-                    prefixText: '+91 | ',
+                    prefixText: _dialPrefix,
                     helperText: 'Contact number is taken from your current login profile',
                   ),
                   
@@ -766,3 +769,6 @@ class _EditAddressScreenState extends ConsumerState<EditAddressScreen> {
     );
   }
 }
+
+/// Country code prefix shown before the contact number, e.g. "+60 | ".
+String get _dialPrefix => '${AppBranding.instance.dialCode} | ';

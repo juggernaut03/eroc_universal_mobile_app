@@ -10,6 +10,7 @@ import 'package:patelmart/presentation/providers/location_provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../providers/app_shell_providers.dart';
 import 'confirmation_dialog.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // Provider for the profile repository (removed local definition, use the global one from profile_repository.dart)
 
@@ -308,7 +309,7 @@ class _DrawerItemTile extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '₹${cartTotal.toStringAsFixed(0)}',
+              '$currencySymbol${cartTotal.toStringAsFixed(0)}',
               style: TextStyle(
                 color: AppColors.primary,
                 fontWeight: FontWeight.bold,

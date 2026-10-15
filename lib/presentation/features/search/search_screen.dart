@@ -15,6 +15,7 @@ import '../../providers/cart_provider.dart';
 import '../../providers/search_providers.dart';
 import '../../../di/infrastructure_providers.dart';
 import '../../providers/search_screen_providers.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 
 
@@ -771,7 +772,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       children: [
                         // Current Price with proper decimal formatting
                         Text(
-                          '₹${ourPrice.toStringAsFixed(ourPrice.truncateToDouble() == ourPrice ? 0 : 2)}',
+                          '$currencySymbol${ourPrice.toStringAsFixed(ourPrice.truncateToDouble() == ourPrice ? 0 : 2)}',
                           style: AppTextStyles.h6.copyWith(
                             fontWeight: FontWeight.bold,
                             color: AppColors.primary,
@@ -783,7 +784,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                         // MRP (if different from our price) with proper decimal formatting
                         if (productMrp > ourPrice) ...[
                           Text(
-                            '₹${productMrp.toStringAsFixed(productMrp.truncateToDouble() == productMrp ? 0 : 2)}',
+                            '$currencySymbol${productMrp.toStringAsFixed(productMrp.truncateToDouble() == productMrp ? 0 : 2)}',
                             style: AppTextStyles.bodySmall.copyWith(
                               decoration: TextDecoration.lineThrough,
                               color: AppColors.textSecondary,

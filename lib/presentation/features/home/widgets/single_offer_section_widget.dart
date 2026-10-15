@@ -8,6 +8,7 @@ import '../../../../data/models/product_model.dart';
 import '../../../providers/cart_provider.dart';
 import '../../../providers/steal_deals_provider.dart';
 import '../../../providers/outlet_status_provider.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 /// A single offer section: title + horizontal product card list.
 /// Can be placed individually anywhere in the widget tree.
@@ -410,7 +411,7 @@ class _OfferProductCardState extends ConsumerState<_OfferProductCard>
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: Text(
-                      '₹${_formatPrice(widget.product.ourPrice)}',
+                      '$currencySymbol${_formatPrice(widget.product.ourPrice)}',
                       style: AppTextStyles.h6.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
@@ -419,7 +420,7 @@ class _OfferProductCardState extends ConsumerState<_OfferProductCard>
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    '₹${_formatPrice(widget.product.productMrp)}',
+                    '$currencySymbol${_formatPrice(widget.product.productMrp)}',
                     style: AppTextStyles.bodyMedium.copyWith(
                       color: AppColors.neutral500,
                       decoration: TextDecoration.lineThrough,

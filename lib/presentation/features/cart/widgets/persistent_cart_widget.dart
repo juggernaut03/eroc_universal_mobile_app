@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:patelmart/core/constants/app_colors.dart';
 import 'package:patelmart/presentation/providers/cart_provider.dart';
 import 'package:patelmart/presentation/providers/steal_deals_provider.dart';
+import 'package:patelmart/core/branding/app_branding.dart';
 
 // Offer slab colors — mapped to AppColors (dynamic tenant branding)
 Color get _offerGreen => AppColors.secondary;
@@ -157,7 +158,7 @@ class _PersistentCartWidgetState extends ConsumerState<PersistentCartWidget> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      '₹${cartTotal.toStringAsFixed(0)} Cart Total',
+                      '$currencySymbol${cartTotal.toStringAsFixed(0)} Cart Total',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 13,
@@ -165,7 +166,7 @@ class _PersistentCartWidgetState extends ConsumerState<PersistentCartWidget> {
                       ),
                     ),
                     Text(
-                      '$totalItems Item${totalItems > 1 ? 's' : ''}${savings > 0 ? ' • ₹${savings.toStringAsFixed(0)} Saved' : ''}',
+                      '$totalItems Item${totalItems > 1 ? 's' : ''}${savings > 0 ? ' • $currencySymbol${savings.toStringAsFixed(0)} Saved' : ''}',
                       style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 11,
