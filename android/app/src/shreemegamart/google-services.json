@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "247339472735",
-    "project_id": "shree-mega-mart-f82b3",
-    "storage_bucket": "shree-mega-mart-f82b3.firebasestorage.app"
+    "project_number": "1011854209122",
+    "project_id": "ecommerce-eroc",
+    "storage_bucket": "ecommerce-eroc.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:247339472735:android:b5f558420103db117908ea",
+        "mobilesdk_app_id": "1:1011854209122:android:9b7bf8940250b0295ba13b",
         "android_client_info": {
-          "package_name": "com.shreemegamart.androidapp"
+          "package_name": "com.justpress.store"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCxsgkE9Awmx6o4XS3oSZjeHrXyQLtZQPc"
+          "current_key": "AIzaSyALbTQaXLcm0Iohrvx0adIlHOK1kSgnviw"
         }
       ],
       "services": {

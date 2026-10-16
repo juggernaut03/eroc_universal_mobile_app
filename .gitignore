@@ -48,3 +48,6 @@ app.*.map.json
 /android/*.jks
 /android/*.keystore
 /android/key*.properties
+
+# Firebase Admin SDK keys are secrets - never commit them
+*firebase-adminsdk*.json

@@ -31,6 +31,15 @@ import 'di/service_providers.dart';
 import 'di/infrastructure_providers.dart';
 import 'domain/repositories/i_notification_service.dart';
 import 'presentation/providers/app_shell_providers.dart';
+
+/// Firebase options for this build.
+///
+/// Android reads the flavor's own `android/app/src/<flavor>/google-services.json`
+/// (null options), so each tenant app talks to its own Firebase project.
+/// Other platforms still use the generated [DefaultFirebaseOptions].
+FirebaseOptions? get _firebaseOptions =>
+    Platform.isAndroid ? null : DefaultFirebaseOptions.currentPlatform;
+
 // PRODUCT CACHE IMPORTS
 
 // Global navigator key for navigation from background
@@ -68,7 +77,7 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     
     // ONLY initialize Firebase if not already initialized
     if (Firebase.apps.isEmpty) {
-      await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+      await Firebase.initializeApp(options: _firebaseOptions);
       if (kDebugMode) print('🔥 Firebase initialized in background handler');
     }
     
@@ -122,7 +131,7 @@ void main() async {
     // Initialize Firebase with enhanced error handling and iOS-specific configuration
     try {
       if (kDebugMode) print('🔥 Initializing Firebase...');
-      await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+      await Firebase.initializeApp(options: _firebaseOptions);
       logger.log('✅ Firebase initialized successfully');
       
       // Platform-specific Firebase configuration
